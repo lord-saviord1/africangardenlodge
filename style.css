@@ -1127,11 +1127,12 @@ img {
   .mobile-nav-toggle {
     display: block !important;
     position: fixed !important;
-    right: 20px !important;
-    top: 20px !important;
+    right: 10px !important;
+    top: 10px !important;
     z-index: 99999 !important;
-    font-size: 40px !important;
-    background: red !important; /* Temporary - so you can see it */
+    font-size: 30px !important;
+    background: #2C1810FA !important; /* Temporary - so you can see it */
   }
 }
+
 
