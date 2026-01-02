@@ -1,6 +1,6 @@
 /* ==========================================
    AFRICAN GARDEN LODGE - COMPLETE JAVASCRIPT
-   Save as: assets/js/main.js
+   Save as: main.js
    ========================================== */
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -22,15 +22,23 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   // ========================================
-  // 2. MOBILE MENU TOGGLE
+  // 2. MOBILE MENU TOGGLE - FIXED VERSION
   // ========================================
   
   const mobileToggle = document.querySelector('.mobile-nav-toggle');
   const navMenu = document.querySelector('.navmenu');
   
+  console.log('Mobile toggle element:', mobileToggle); // Debug log
+  console.log('Nav menu element:', navMenu); // Debug log
+  
   if (mobileToggle && navMenu) {
     // Toggle menu on click
-    mobileToggle.addEventListener('click', function() {
+    mobileToggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      console.log('Mobile toggle clicked!'); // Debug log
+      
       navMenu.classList.toggle('mobile-nav-active');
       
       // Change icon
@@ -49,8 +57,10 @@ document.addEventListener('DOMContentLoaded', function() {
       link.addEventListener('click', function() {
         if (window.innerWidth < 992) {
           navMenu.classList.remove('mobile-nav-active');
-          mobileToggle.classList.remove('bi-x');
-          mobileToggle.classList.add('bi-list');
+          if (mobileToggle) {
+            mobileToggle.classList.remove('bi-x');
+            mobileToggle.classList.add('bi-list');
+          }
         }
       });
     });
@@ -65,6 +75,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       }
     });
+  } else {
+    console.error('Mobile toggle or nav menu not found!'); // Debug log
   }
   
   // ========================================
@@ -76,46 +88,50 @@ document.addEventListener('DOMContentLoaded', function() {
   let currentSlide = 0;
   const slideInterval = 5000; // 5 seconds
   
-  function showSlide(index) {
-    // Remove active class from all
-    slides.forEach(slide => slide.classList.remove('active'));
-    dots.forEach(dot => dot.classList.remove('active'));
-    
-    // Add active to current
-    slides[index].classList.add('active');
-    dots[index].classList.add('active');
-  }
-  
-  function nextSlide() {
-    currentSlide = (currentSlide + 1) % slides.length;
-    showSlide(currentSlide);
-  }
-  
-  // Auto-rotate
-  let autoRotate = setInterval(nextSlide, slideInterval);
-  
-  // Manual navigation with dots
-  dots.forEach(function(dot, index) {
-    dot.addEventListener('click', function() {
-      currentSlide = index;
-      showSlide(currentSlide);
+  if (slides.length > 0) {
+    function showSlide(index) {
+      // Remove active class from all
+      slides.forEach(slide => slide.classList.remove('active'));
+      dots.forEach(dot => dot.classList.remove('active'));
       
-      // Reset timer
-      clearInterval(autoRotate);
-      autoRotate = setInterval(nextSlide, slideInterval);
-    });
-  });
-  
-  // Pause on hover
-  const heroSection = document.querySelector('.hero');
-  if (heroSection) {
-    heroSection.addEventListener('mouseenter', function() {
-      clearInterval(autoRotate);
+      // Add active to current
+      slides[index].classList.add('active');
+      if (dots[index]) {
+        dots[index].classList.add('active');
+      }
+    }
+    
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }
+    
+    // Auto-rotate
+    let autoRotate = setInterval(nextSlide, slideInterval);
+    
+    // Manual navigation with dots
+    dots.forEach(function(dot, index) {
+      dot.addEventListener('click', function() {
+        currentSlide = index;
+        showSlide(currentSlide);
+        
+        // Reset timer
+        clearInterval(autoRotate);
+        autoRotate = setInterval(nextSlide, slideInterval);
+      });
     });
     
-    heroSection.addEventListener('mouseleave', function() {
-      autoRotate = setInterval(nextSlide, slideInterval);
-    });
+    // Pause on hover
+    const heroSection = document.querySelector('.hero');
+    if (heroSection) {
+      heroSection.addEventListener('mouseenter', function() {
+        clearInterval(autoRotate);
+      });
+      
+      heroSection.addEventListener('mouseleave', function() {
+        autoRotate = setInterval(nextSlide, slideInterval);
+      });
+    }
   }
   
   // ========================================
@@ -347,10 +363,27 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   
   // ========================================
-  // 9. INITIALIZE CONSOLE MESSAGE
+  // 9. FORCE SHOW MOBILE MENU ON RESIZE
+  // ========================================
+  
+  window.addEventListener('resize', function() {
+    if (window.innerWidth >= 992) {
+      // Desktop view - hide mobile menu
+      if (navMenu) {
+        navMenu.classList.remove('mobile-nav-active');
+      }
+      if (mobileToggle) {
+        mobileToggle.classList.remove('bi-x');
+        mobileToggle.classList.add('bi-list');
+      }
+    }
+  });
+  
+  // ========================================
+  // 10. INITIALIZE CONSOLE MESSAGE
   // ========================================
   
   console.log('%c✓ African Garden Lodge Website Loaded', 'color: #DAA520; font-size: 16px; font-weight: bold;');
-  console.log('%cWebsite by: Your Name', 'color: #8B4513; font-size: 12px;');
+  console.log('%cMobile menu ready!', 'color: #8B4513; font-size: 12px;');
   
 });
