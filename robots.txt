@@ -1,0 +1,12 @@
+# robots.txt for African Garden Lodge
+# Save this as: robots.txt (in root folder)
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://lord-saviord1.github.io/africangardenlodge/sitemap.xml
+
+# Disallow admin areas (if any)
+Disallow: /admin/
+Disallow: /*.json$
