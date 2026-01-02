@@ -1,6 +1,6 @@
 /* ==========================================
    AFRICAN GARDEN LODGE - COMPLETE CSS
-   Save as: assets/css/style.css
+   Save as: style.css
    ========================================== */
 
 /* ========== ROOT VARIABLES ========== */
@@ -734,102 +734,6 @@ img {
   50% { box-shadow: 0 4px 20px rgba(37,211,102,0.8); }
 }
 
-/* ========== RESPONSIVE ========== */
-@media (max-width: 991px) {
-  .col-lg-4,
-  .col-lg-6,
-  .col-lg-8,
-  .col-md-6 {
-    width: 100%;
-  }
-  
-  .mobile-nav-toggle {
-    display: block;
-  }
-  
-  .navmenu {
-    position: fixed;
-    top: 70px;
-    right: -100%;
-    width: 300px;
-    min-height: 400px;
-    background: rgba(44,24,16,0.98);
-    padding: 30px 20px;
-    transition: right 0.3s ease;
-    box-shadow: -5px 0 20px rgba(0,0,0,0.4);
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  .navmenu.mobile-nav-active {
-    right: 0;
-  }
-  
-  .navmenu ul {
-    flex-direction: column;
-    width: 100%;
-    gap: 0;
-  }
-  
-  .navmenu ul li {
-    width: 100%;
-    border-bottom: 1px solid rgba(245,230,211,0.1);
-  }
-  
-  .navmenu a {
-    display: block;
-    padding: 15px 10px;
-    font-size: 16px;
-  }
-  
-  .btn-getstarted {
-    width: 100%;
-    margin: 15px 0 0 0;
-    text-align: center;
-  }
-  
-  .hero-title {
-    font-size: 36px;
-  }
-  
-  .hero-buttons {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .btn-hero {
-    width: 100%;
-    max-width: 300px;
-    justify-content: center;
-  }
-}
-
-@media (max-width: 768px) {
-  .section {
-    padding: 60px 0;
-  }
-  
-  .section-title h2 {
-    font-size: 32px;
-  }
-  
-  .hero-title {
-    font-size: 28px;
-  }
-  
-  .whatsapp-float {
-    width: 50px;
-    height: 50px;
-    bottom: 20px;
-    right: 20px;
-    font-size: 28px;
-  }
-}
-/* ==========================================
-   ADDITIONAL STYLES FOR VENUE PAGES
-   Add this to your existing style.css
-   ========================================== */
-
 /* ========== VENUE HERO SECTION ========== */
 .venue-hero {
   position: relative;
@@ -1046,8 +950,85 @@ img {
   padding: 80px 0;
 }
 
-/* ========== RESPONSIVE ADJUSTMENTS ========== */
+/* ========== MOBILE NAVIGATION AND RESPONSIVE ========== */
 @media (max-width: 991px) {
+  .col-lg-4,
+  .col-lg-6,
+  .col-lg-8,
+  .col-md-6 {
+    width: 100%;
+  }
+  
+  /* Show hamburger menu */
+  .mobile-nav-toggle {
+    display: block !important;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 9999;
+  }
+  
+  .header .container {
+    position: relative;
+  }
+  
+  /* Mobile menu styling */
+  .navmenu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background: rgba(44,24,16,0.98);
+    padding: 80px 20px 30px 20px;
+    transition: right 0.3s ease;
+    box-shadow: -5px 0 20px rgba(0,0,0,0.4);
+    overflow-y: auto;
+    z-index: 9998;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .navmenu.mobile-nav-active {
+    right: 0 !important;
+  }
+  
+  .navmenu ul {
+    flex-direction: column;
+    width: 100%;
+    gap: 0;
+  }
+  
+  .navmenu ul li {
+    width: 100%;
+    border-bottom: 1px solid rgba(245,230,211,0.1);
+  }
+  
+  .navmenu a {
+    display: block;
+    padding: 15px 10px;
+    font-size: 16px;
+  }
+  
+  .btn-getstarted {
+    width: 100%;
+    margin: 15px 0 0 0;
+    text-align: center;
+    display: block;
+  }
+  
+  /* Add padding to hero sections to prevent overlap */
+  .hero {
+    padding-top: 70px;
+    min-height: 100vh;
+  }
+  
+  .venue-hero {
+    padding-top: 70px;
+    min-height: 60vh;
+  }
+  
   .venue-hero-content h1 {
     font-size: 42px;
   }
@@ -1068,11 +1049,43 @@ img {
   .highlight-item i {
     margin: 0 auto 15px;
   }
+  
+  .hero-title {
+    font-size: 36px;
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .btn-hero {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+  }
 }
 
 @media (max-width: 768px) {
+  .section {
+    padding: 60px 0;
+  }
+  
+  .section-title h2 {
+    font-size: 32px;
+  }
+  
+  .hero {
+    padding-top: 70px;
+  }
+  
+  .hero-title {
+    font-size: 28px;
+  }
+  
   .venue-hero {
     min-height: 50vh;
+    padding-top: 70px;
   }
   
   .venue-hero-content h1 {
@@ -1091,5 +1104,18 @@ img {
   .menu-item,
   .event-card {
     margin-bottom: 20px;
+  }
+  
+  .whatsapp-float {
+    width: 50px;
+    height: 50px;
+    bottom: 20px;
+    right: 20px;
+    font-size: 28px;
+  }
+  
+  .booking-form,
+  .contact-form {
+    padding: 30px 20px;
   }
 }
