@@ -27,6 +27,7 @@
             min-height: 100vh;
             height: auto
             overflow-y: auto
+            overflow-x: auto
             display: flex;
             align-items: center;
             justify-content: center;
@@ -364,10 +365,31 @@
                 </div>
             </div>
 
-            
-        </div>
+
+    <script>
+    // Ensure proper viewport settings
+    document.documentElement.style.height = '100%';
+    document.body.style.height = '100%';
+    
+    // Fix for iOS devices
+    document.addEventListener('touchmove', function(event) {
+        if (event.target.closest('.container') === null) {
+            event.preventDefault();
+        }
+    }, { passive: true });
+    
+    // Responsive adjustments
+    function adjustForViewport() {
+        const vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+    
+    adjustForViewport();
+    window.addEventListener('resize', adjustForViewport);
+    window.addEventListener('orientationchange', adjustForViewport);
+    </script>
+
         </body>     
-        </div>
     </html>
         
 
