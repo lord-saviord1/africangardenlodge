@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -25,15 +24,14 @@
             background: #ffffff;
             color: var(--dark-text);
             min-height: 100vh;
-            height: auto
-            overflow-y: auto
-            overflow-x: auto
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 20px;
             position: relative;
-            overflow: hidden;
+            overflow-x: hidden;
+            margin: 0;
+            width: 100%;
         }
 
         /* Decorative background elements */
@@ -67,8 +65,11 @@
             position: relative;
             z-index: 1;
             max-width: 700px;
+            width: 100%;
             text-align: center;
             animation: fadeIn 0.8s ease-in-out;
+            margin: 0 auto;
+            box-sizing: border-box;
         }
 
         @keyframes fadeIn {
@@ -333,17 +334,17 @@
     <div class="container">
         <div class="logo-section">
             <div class="logo">
-                <img src="IMG-20260314-WA0000.jpg" alt="African Garden Lodge Logo" class="logo-img">
+                <img src="logo.png" alt="African Garden Lodge Logo" class="logo-img">
             </div>
             <h1 class="lodge-name">African Garden Lodge</h1>
-            <p class="lodge-tagline">Socializing in Nature's Presence</p>
+            <p class="lodge-tagline">Nature's Sanctuary Awaits</p>
         </div>
 
         <div class="divider"></div>
 
         <div class="content">
             <h2>We're Coming Soon</h2>
-            <p>Our website is currently under construction, and we're working hard to bring you an unforgettable experience.</p>
+            <p>Our beautiful website is currently under construction, and we're working hard to bring you an unforgettable experience.</p>
             
             <div class="status-box">
                 <span class="status-label">In Progress</span>
@@ -356,41 +357,52 @@
             </div>
 
             <p>In the meantime, feel free to reach out to us directly. We'd love to hear from you!</p>
-<div class="contact-section">
+        </div>
+
+        <div class="contact-section">
             <h3>Get in Touch</h3>
             <div class="contact-info">
-               
+                <div class="contact-item">
+                    📧 <a href="/cdn-cgi/l/email-protection#9cf3e6f3f9f1f9f2fdf8a8dcfbf1fdf5f0b2fff3f1"><span class="__cf_email__" data-cfemail="442b3e2b2129212a252070042329252d286a272b29">[email&#160;protected]</span></a>
+                </div>
                 <div class="contact-item">
                     📱 <a href="tel:08147232337">+234 814 723 2337</a>
                 </div>
             </div>
 
+            <div class="social-links">
+                <a href="#" class="social-icon" title="Facebook">f</a>
+                <a href="#" class="social-icon" title="Instagram">📷</a>
+                <a href="#" class="social-icon" title="Twitter">𝕏</a>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2026 African Garden Lodge. All rights reserved.</p>
+        </div>
+    </div>
 
     <script>
-    // Ensure proper viewport settings
-    document.documentElement.style.height = '100%';
-    document.body.style.height = '100%';
-    
-    // Fix for iOS devices
-    document.addEventListener('touchmove', function(event) {
-        if (event.target.closest('.container') === null) {
-            event.preventDefault();
-        }
-    }, { passive: true });
-    
-    // Responsive adjustments
-    function adjustForViewport() {
-        const vh = window.innerHeight * 0.01;
-        document.documentElement.style.setProperty('--vh', `${vh}px`);
-    }
-    
-    adjustForViewport();
-    window.addEventListener('resize', adjustForViewport);
-    window.addEventListener('orientationchange', adjustForViewport);
-    </script>
+        // Fix viewport and scrolling
+        document.documentElement.style.width = '100%';
+        document.documentElement.style.margin = '0';
+        document.documentElement.style.padding = '0';
+        document.body.style.width = '100%';
+        document.body.style.margin = '0';
+        document.body.style.padding = '0';
 
-        </body>     
-    </html>
+        // Responsive adjustments
+        function adjustForViewport() {
+            const vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+        }
+
+        adjustForViewport();
+        window.addEventListener('resize', adjustForViewport);
+        window.addEventListener('orientationchange', adjustForViewport);
+    </script>
+</body>
+</html>
         
 
             
